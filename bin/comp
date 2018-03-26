@@ -1,0 +1,54 @@
+#!/bin/bash
+
+build () {
+    local mod=$1
+    if [ -z "$mod" ]; then
+        echo module name required
+    fi
+    docker build --no-cache $mod -t stevencox/robokop-$mod
+}
+push () {
+    local mod=$1
+    if [ -z "$mod" ]; then
+        echo module name required
+    fi
+    docker push stevencox/robokop-$mod
+}
+clean () {
+    images () {
+        docker image rm -f $(docker images | awk '{ print $3 }' | grep -vi image)
+    }
+    $*
+}
+all () {
+    build base
+    push base
+    build onto
+    push onto
+}
+kill () {
+    local mod=$1
+    if [ -z "$mod" ]; then
+        echo module name required
+    fi
+    docker kill -s 9 $mod
+}
+shell () {
+        local mod=$1
+    if [ -z "$mod" ]; then
+        echo module name required
+    fi
+    docker exec -it $mod bash
+}
+onto () {
+    set -x
+    docker run \
+           --env GIT_PULL=true \
+           --name ont \
+           --rm \
+           --publish=5001:5353 \
+           -v /Users/scox/dev/robokop-interfaces/greent/:/data stevencox/robokop-onto
+    set +x
+}
+
+$*

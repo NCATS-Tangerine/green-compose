@@ -1,0 +1,13 @@
+version: '3'
+services:
+  rosetta:
+    build: rosetta
+    depends_on:
+      - redis
+      - neo4j
+  neo4j:
+    environment:
+      NEO4J_AUTH: none
+    image: neo4j:3.3.4
+  redis:
+    image: redis:alpine
