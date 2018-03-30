@@ -24,11 +24,6 @@ else
 
     # Execute the smartAPI application.
     echo Starting app with ontologies:
-    find $DATA_DIR -name "*.obo" -print
-    ls $PWD/robokop-interfaces
-    ls $PWD/robokop-interfaces/greent
-    ls $PWD/robokop-interfaces/greent/api
-    ls $PWD/robokop-interfaces/greent/api/onto.py
     python $PWD/robokop-interfaces/greent/api/onto.py \
            --port=$APP_PORT \
            --data=$DATA_DIR
