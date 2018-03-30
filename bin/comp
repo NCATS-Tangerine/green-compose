@@ -16,7 +16,7 @@ push () {
 }
 clean () {
     images () {
-        docker image rm -f $(docker images | awk '{ print $3 }' | grep -vi image)
+        docker images rm -f $(docker images | awk '{ print $3 }' | grep -vi image)
     }
     $*
 }
