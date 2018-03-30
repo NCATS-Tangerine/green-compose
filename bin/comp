@@ -16,7 +16,7 @@ push () {
 }
 clean () {
     images () {
-        docker images rm -f $(docker images | awk '{ print $3 }' | grep -vi image)
+        for i in $(sudo docker images | awk '{ print $3 }' | grep -vi image); do echo $i; sudo docker rmi -f $i; done
     }
     $*
 }
