@@ -4,7 +4,7 @@
 set -x 
 
 cd /code
-export PYTHONPATH=$PWD/reasoner-tools:$PWD/robokop-build
+export PYTHONPATH=$PWD/reasoner-tools
 
 #seriously?
 while [ ! "$(echo exit | telnet neo4j 7687 2>&1 | grep -c "Connected to")" == "1" ]; do
