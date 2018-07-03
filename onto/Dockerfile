@@ -1,4 +1,4 @@
-FROM stevencox/robokop-base:latest
+FROM greentranslator/green-base:latest
 
 ADD ./onto_smartapi.sh .
 ADD ./synonym.py /usr/local/lib/python3.6/site-packages/pronto/synonym.py
