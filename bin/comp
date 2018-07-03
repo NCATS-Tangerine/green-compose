@@ -47,7 +47,7 @@ onto () {
            --name ont \
            --rm \
            --publish=5001:5353 \
-           -v /Users/scox/dev/robokop-interfaces/greent/:/data stevencox/robokop-onto
+           -v ${local_dir}:/data greentranslator/green-onto
     set +x
 }
 
