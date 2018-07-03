@@ -5,14 +5,14 @@ build () {
     if [ -z "$mod" ]; then
         echo module name required
     fi
-    docker build --no-cache $mod -t stevencox/robokop-$mod
+    docker build --no-cache $mod -t greentranslator/green-$mod
 }
 push () {
     local mod=$1
     if [ -z "$mod" ]; then
         echo module name required
     fi
-    docker push stevencox/robokop-$mod
+    docker push greentranslator/green-$mod
 }
 clean () {
     images () {
