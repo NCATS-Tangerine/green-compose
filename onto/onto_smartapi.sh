@@ -4,11 +4,11 @@ set -x
 set -e
 
 # Configure the Python path.
-export PYTHONPATH=$PWD/robokop-interfaces:$PWD/robokop-build
+export PYTHONPATH=$PWD/reasoner-tools
 
 if [ "x$GIT_PULL" == "xtrue" ]; then
     echo pulling latest source.
-    cd robokop-interfaces
+    cd reasoner-tools
     git pull
     cd ..
 fi
@@ -24,7 +24,7 @@ else
 
     # Execute the smartAPI application.
     echo Starting app with ontologies:
-    python $PWD/robokop-interfaces/greent/api/onto.py \
+    python $PWD/reasoner-tools/greent/api/onto.py \
            --port=$APP_PORT \
            --data=$DATA_DIR
 fi
