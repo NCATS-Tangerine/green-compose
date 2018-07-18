@@ -25,6 +25,8 @@ all () {
     push base
     build onto
     push onto
+    build bionames
+    push bionames
 }
 kill () {
     local mod=$1
@@ -51,5 +53,17 @@ onto () {
            -v ${local_dir}:/data greentranslator/green-onto
     set +x
 }
+bionames () {
+    set -x
+    local_dir=$1
+    docker run \
+           --env GIT_PULL=true \
+           --name bio \
+           --rm \
+           --publish=5001:5354 \
+           -v ${local_dir}:/data greentranslator/green-bionames
+    set +x
+}
+
 
 $*

@@ -7,6 +7,6 @@ RUN chmod +x bionames_smartapi.sh
 
 ENV APP_PORT 5354
 ENV DATA_DIR /data
-ENV GIT_PULL false
+ENV GIT_PULL falses
 
 CMD ["./bionames_smartapi.sh"]
