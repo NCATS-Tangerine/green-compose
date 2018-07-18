@@ -42,6 +42,7 @@ shell () {
 }
 onto () {
     set -x
+    local_dir=$1
     docker run \
            --env GIT_PULL=true \
            --name ont \
