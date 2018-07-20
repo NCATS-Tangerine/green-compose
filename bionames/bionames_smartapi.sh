@@ -17,7 +17,7 @@ fi
 echo Starting app: bionames
 python $PWD/reasoner-tools/builder/api/naming.py \
        --port=$APP_PORT \
-       --data=$DATA_DIR
+       #--data=$DATA_DIR
 
 echo Exiting.
 exit 0
