@@ -28,6 +28,21 @@ all () {
     build bionames
     push bionames
 }
+
+all_bionames () {
+    build base
+    push base
+    build bionames
+    push bionames
+}
+
+all_onto () {
+    build base
+    push base
+    build onto
+    push onto
+}
+
 kill () {
     local mod=$1
     if [ -z "$mod" ]; then
