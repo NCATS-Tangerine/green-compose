@@ -11,3 +11,5 @@ RUN apt-get install telnet
 RUN apt-get install -y emacs24
 
 CMD ["PYTHONPATH=reasoner-tools", "python", "reasoner-tools/greent/rosetta.py", "--debug", "--test"]
+
+# another jenkins test #2 july 27 11:13 AM
