@@ -43,6 +43,13 @@ all_onto () {
     push onto
 }
 
+all_uberonto () {
+    build base
+    push base
+    build uberonto
+    push uberonto
+}
+
 kill () {
     local mod=$1
     if [ -z "$mod" ]; then
