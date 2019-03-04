@@ -75,6 +75,17 @@ onto () {
            -v ${local_dir}:/data greentranslator/green-onto
     set +x
 }
+uberonto () {
+    set -x
+    local_dir=$1
+    docker run \
+           --env GIT_PULL=true \
+           --name ont \
+           --rm \
+           --publish=5001:5353 \
+           -v ${local_dir}:/data greentranslator/green-uberonto
+    set +x
+}
 bionames () {
     set -x
     local_dir=$1
