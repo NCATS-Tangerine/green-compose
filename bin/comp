@@ -82,7 +82,7 @@ uberonto () {
            --env GIT_PULL=true \
            --name ont \
            --rm \
-           --publish=5001:5353 \
+           --publish=5001:5355 \
            -v ${local_dir}:/data greentranslator/green-uberonto
     set +x
 }
