@@ -5,7 +5,7 @@ ADD ./uberonto_gunicorn_smartapi.sh .
 
 RUN chmod +x uberonto_gunicorn_smartapi.sh
 
-ENV APP_PORT 5353
+ENV APP_PORT 5357
 ENV GIT_PULL false
 ENV NUM_WORKERS 3
 
