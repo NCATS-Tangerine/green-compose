@@ -50,6 +50,13 @@ all_uberonto () {
     push uberonto
 }
 
+all_uberonto_gunicorn () {
+    build base
+    push base
+    build uberonto_gunicorn
+    push uberonto_gunicorn
+}
+
 kill () {
     local mod=$1
     if [ -z "$mod" ]; then
@@ -86,6 +93,19 @@ uberonto () {
            -v ${local_dir}:/data greentranslator/green-uberonto
     set +x
 }
+
+uberonto_gunicorn () {
+    set -x
+    local_dir=$1
+    docker run \
+           --env GIT_PULL=true \
+           --name ont \
+           --rm \
+           --publish=5001:5357 \
+           -v ${local_dir}:/data greentranslator/green-uberonto-gunicorn
+    set +x
+}
+
 bionames () {
     set -x
     local_dir=$1
