@@ -13,8 +13,10 @@ if [ "x$GIT_PULL" == "xtrue" ]; then
     cd greent/api
 fi
 
+cd /code/reasoner-tools/greent/api
+
 gunicorn \
-        --port=$APP_PORT \
+        --bind=0.0.0.0:$APP_PORT \
         --workers=$NUM_WORKERS \
         uberonto_wsgi:app
 
