@@ -50,7 +50,7 @@ all_uberonto () {
     push uberonto
 }
 
-all_uberonto_gunicorn () {
+all_onto_gunicorn () {
     build base
     push base
     build onto_gunicorn
