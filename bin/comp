@@ -53,6 +53,13 @@ all_uberonto () {
 all_uberonto_gunicorn () {
     build base
     push base
+    build onto_gunicorn
+    push onto_gunicorn
+}
+
+all_uberonto_gunicorn () {
+    build base
+    push base
     build uberonto_gunicorn
     push uberonto_gunicorn
 }
@@ -87,6 +94,17 @@ onto () {
            --rm \
            --publish=5001:5353 \
            -v ${local_dir}:/data greentranslator/green-onto
+    set +x
+}
+onto_gunicorn () {
+    set -x
+    local_dir=$1
+    docker run \
+           --env GIT_PULL=true \
+           --name ont \
+           --rm \
+           --publish=5001:5359 \
+           -v ${local_dir}:/data greentranslator/green-onto-gunicorn
     set +x
 }
 uberonto () {
