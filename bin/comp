@@ -85,6 +85,23 @@ shell () {
     fi
     docker exec -it $mod bash
 }
+monit () {
+    set -x
+    docker run \
+           --name monit \
+           --rm \
+           greentranslator/green-monit-base $*
+    set +x
+}
+tranql () {
+    set -x
+    docker run \
+           --name tranql \
+           --rm \
+           --publish=8101:8101 \
+           greentranslator/green-tranql
+    set +x
+}
 onto () {
     set -x
     local_dir=$1
