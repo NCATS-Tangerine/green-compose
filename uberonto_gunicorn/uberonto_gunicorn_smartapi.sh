@@ -10,6 +10,7 @@ if [ "x$GIT_PULL" == "xtrue" ]; then
     echo pulling latest source.
     cd reasoner-tools
     git pull
+    git checkout Phil_onto_update
     cd greent/api
 fi
 
