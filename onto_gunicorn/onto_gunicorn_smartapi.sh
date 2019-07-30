@@ -23,4 +23,4 @@ gunicorn \
         onto_wsgi:app
 
 echo Exiting.
-exit 0
+exit
