@@ -14,7 +14,7 @@ if [ "x$GIT_PULL" == "xtrue" ]; then
     cd greent/api
 fi
 
-cd ../../reasoner-tools/greent/api
+cd /code/reasoner-tools/greent/api
 
 gunicorn \
         --bind=0.0.0.0:$APP_PORT \
