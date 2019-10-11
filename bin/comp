@@ -5,14 +5,14 @@ build () {
     if [ -z "$mod" ]; then
         echo module name required
     fi
-    docker build --no-cache $mod -t greentranslator/green-$mod
+    docker build --no-cache $mod -t renciorg/green-$mod
 }
 push () {
     local mod=$1
     if [ -z "$mod" ]; then
         echo module name required
     fi
-    docker push greentranslator/green-$mod
+    docker push renciorg/green-$mod
 }
 clean () {
     images () {
@@ -23,8 +23,8 @@ clean () {
 all () {
     build base
     push base
-    build onto
-    push onto
+    build onto_gunicorn
+    push onto_gunicorn
     build bionames
     push bionames
 }
@@ -36,41 +36,12 @@ all_bionames () {
     push bionames
 }
 
-all_onto () {
-    build base
-    push base
-    build onto
-    push onto
-}
-
-all_uberonto () {
-    build base
-    push base
-    build uberonto
-    push uberonto
-}
-
 all_onto_gunicorn () {
     build base
     push base
     build onto_gunicorn
     push onto_gunicorn
 }
-
-all_uberonto_gunicorn () {
-    build base
-    push base
-    build uberonto_gunicorn
-    push uberonto_gunicorn
-}
-
-all_bionames_gunicorn () {
-    build base
-    push base
-    build bionames_gunicorn
-    push bionames_gunicorn
-}
-
 kill () {
     local mod=$1
     if [ -z "$mod" ]; then
@@ -90,7 +61,7 @@ monit () {
     docker run \
            --name monit \
            --rm \
-           greentranslator/green-monit-base $*
+           renciorg/green-monit-base $*
     set +x
 }
 tranql () {
@@ -99,18 +70,7 @@ tranql () {
            --name tranql \
            --rm \
            --publish=8101:8101 \
-           greentranslator/green-tranql
-    set +x
-}
-onto () {
-    set -x
-    local_dir=$1
-    docker run \
-           --env GIT_PULL=true \
-           --name ont \
-           --rm \
-           --publish=5001:5353 \
-           -v ${local_dir}:/data greentranslator/green-onto
+           renciorg/green-tranql
     set +x
 }
 onto_gunicorn () {
@@ -121,29 +81,7 @@ onto_gunicorn () {
            --name ont \
            --rm \
            --publish=5001:5359 \
-           -v ${local_dir}:/data greentranslator/green-onto-gunicorn
-    set +x
-}
-uberonto () {
-    set -x
-    local_dir=$1
-    docker run \
-           --env GIT_PULL=true \
-           --name ont \
-           --rm \
-           --publish=5001:5355 \
-           -v ${local_dir}:/data greentranslator/green-uberonto
-    set +x
-}
-uberonto_gunicorn () {
-    set -x
-    local_dir=$1
-    docker run \
-           --env GIT_PULL=true \
-           --name ont \
-           --rm \
-           --publish=5001:5357 \
-           -v ${local_dir}:/data greentranslator/green-uberonto-gunicorn
+           -v ${local_dir}:/data renciorg/green-onto_gunicorn
     set +x
 }
 bionames () {
@@ -154,19 +92,9 @@ bionames () {
            --name bio \
            --rm \
            --publish=5001:5354 \
-           -v ${local_dir}:/data greentranslator/green-bionames
+           -v ${local_dir}:/data renciorg/green-bionames
     set +x
 }
-bionames_gunicorn () {
-    set -x
-    local_dir=$1
-    docker run \
-           --env GIT_PULL=true \
-           --name bio \
-           --rm \
-           --publish=5001:5358 \
-           -v ${local_dir}:/data greentranslator/green-bionames-gunicorn
-    set +x
-}
+
 
 $*
