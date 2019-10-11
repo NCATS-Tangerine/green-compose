@@ -20,7 +20,7 @@ gunicorn \
         --workers=$NUM_WORKERS \
         --pythonpath '../../' \
         --timeout=120 \
-        onto_wsgi:app
+        onto_gunicorn:app
 
 echo Exiting.
 exit

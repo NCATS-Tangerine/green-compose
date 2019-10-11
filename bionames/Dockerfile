@@ -1,4 +1,4 @@
-FROM greentranslator/green-base:latest
+FROM renciorg/green-base:latest
 
 ADD ./bionames_smartapi.sh .
 ADD ./synonym.py /usr/local/lib/python3.6/site-packages/pronto/synonym.py
